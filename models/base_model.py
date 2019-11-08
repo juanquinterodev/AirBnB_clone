@@ -8,8 +8,8 @@ from datetime import datetime
 class BaseModel():
     """ Base Model class """
     id
-    created_at = datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%f")
-    update_at = datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%f")
+    created_at = datetime.now()
+    update_at = datetime.now()
 
     def __init__(self):
         """Constructor"""
@@ -23,13 +23,13 @@ class BaseModel():
 
     def save(self):
         """Save funct"""
-        self.update_at = datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%f")
+        self.update_at = datetime.now()
 
 
     def to_dict(self):
         """To dict funct"""
         class_dict = self.__dict__.copy()
         class_dict.update({'__class__': self.__class__.__name__})
-        class_dict.update({'created_at': self.created_at})
-        class_dict.update({'update_at': self.update_at})
+        class_dict.update({'created_at': self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")})
+        class_dict.update({'update_at': self.update_at.strftime("%Y-%m-%dT%H:%M:%S.%f")})
         return class_dict
