@@ -11,10 +11,21 @@ class BaseModel():
     created_at = datetime.now()
     update_at = datetime.now()
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """Constructor"""
         self.id = str(uuid4())
-
+        for key, value  in kwargs.items():
+            if key is "created_at":
+                self.created_at = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+            elif key is "update_at":
+                self.update_at = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+            elif key is "id":
+                self.id = value
+            elif key is "name":
+                self.name = value
+            elif key is "my_number":
+                self.my_number = value
+	
 
     def __str__(self):
         """str should print class name, id, dict"""
