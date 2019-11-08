@@ -3,7 +3,7 @@
 
 from uuid import uuid4
 from datetime import datetime
-
+from . import storage
 
 class BaseModel():
     """ Base Model class """
@@ -25,7 +25,8 @@ class BaseModel():
                 self.name = value
             elif key is "my_number":
                 self.my_number = value
-	
+        
+        storage.new(self)
 
     def __str__(self):
         """str should print class name, id, dict"""
@@ -35,6 +36,7 @@ class BaseModel():
     def save(self):
         """Save funct"""
         self.update_at = datetime.now()
+        storage.save()
 
 
     def to_dict(self):
