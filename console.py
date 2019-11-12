@@ -6,6 +6,7 @@ class HBNBCommand(cmd.Cmd):
     file = None
     def do_quit(self, inp):
         pass
+
         return True
     def help_quit(self):
         print('Quit command to exit the program')
