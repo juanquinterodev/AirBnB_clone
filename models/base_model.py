@@ -15,11 +15,12 @@ class BaseModel():
     def __init__(self, *args, **kwargs):
         """Constructor"""
         self.id = str(uuid4())
-        date_iso = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
         for key, value in kwargs.items():
             if key is "created_at":
+                date_iso = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                 self.created_at = date_iso
             elif key is "update_at":
+                date_iso = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                 self.update_at = date_iso
             elif key is "id":
                 self.id = value
@@ -27,7 +28,6 @@ class BaseModel():
                 self.name = value
             elif key is "my_number":
                 self.my_number = value
-
         storage.new(self)
 
     def __str__(self):
