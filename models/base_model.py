@@ -15,20 +15,21 @@ class BaseModel():
     def __init__(self, *args, **kwargs):
         """Constructor"""
         self.id = str(uuid4())
-        for key, value in kwargs.items():
-            if key is "created_at":
-                date_iso = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
-                self.created_at = date_iso
-            elif key is "update_at":
-                date_iso = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
-                self.update_at = date_iso
-            elif key is "id":
-                self.id = value
-            elif key is "name":
-                self.name = value
-            elif key is "my_number":
-                self.my_number = value
-        models.storage.new(self)
+        if kwargs  is not None and kwargs != {}:
+            for key, value in kwargs.items():
+                if key is "created_at":
+                    date_iso = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                    self.created_at = date_iso
+                elif key is "update_at":
+                    date_iso = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                    self.update_at = date_iso
+                elif key is "id":
+                    self.id = value
+                elif key is "name":
+                    self.name = value
+                elif key is "my_number":
+                    self.my_number = value
+            models.storage.new(self)
 
     def __str__(self):
         """str should print class name, id, dict"""
@@ -50,3 +51,4 @@ class BaseModel():
         class_dict.update({'created_at': created_at_string})
         class_dict.update({'update_at': update_at_string})
         return class_dict
+
