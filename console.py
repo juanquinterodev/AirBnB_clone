@@ -20,7 +20,7 @@ class HBNBCommand(cmd.Cmd):
 
     def help_quit(self):
         """ Update help cmd """
-        print('Quit command to exit the program')
+        print('Quit command to exit the program\n')
 
     do_EOF = do_quit
     """End of File - ctrl + D"""
