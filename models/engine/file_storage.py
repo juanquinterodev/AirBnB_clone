@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-
+from ..base_model import BaseModel
 
 class FileStorage:
     __file_path = "file.json"
@@ -21,7 +21,10 @@ class FileStorage:
         my_file = Path(self.__file_path)
         if my_file.is_file():
             with open(self.__file_path) as json_file:
-                self.__objects = json.load(json_file)
+                loads = json.load(json_file)
+                for key, value in loads.items():
+                    obj = eval(value["__class__"])(**value)
+                    self.__objects[key] = obj 
                 return self.__objects
         else:
             return None
