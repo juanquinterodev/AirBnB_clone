@@ -15,8 +15,6 @@ class FileStorage:
 
     def save(self):
         with open(self.__file_path, 'w') as outfile:
-            print("aquí")
-            print(FileStorage.__objects)
             json.dump(FileStorage.__objects, outfile)
 
     def reload(self):
