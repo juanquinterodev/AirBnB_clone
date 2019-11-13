@@ -7,6 +7,7 @@ import models
 from models.user import User
 from models.base_model import BaseModel
 
+
 class HBNBCommand(cmd.Cmd):
     """ HBNB class """
 
@@ -14,18 +15,18 @@ class HBNBCommand(cmd.Cmd):
     file = None
 
     def do_quit(self, inp):
-         """ Exit command """
+        """ Exit command """
         return True
 
     def help_quit(self):
         """ Update help cmd """
-        print('Quit command to exit the program')
+        print('Quit command to exit the program\n')
 
     do_EOF = do_quit
-        """End of File - ctrl + D """
+    """End of File - ctrl + D"""
 
     help_EOF = help_quit
-        """ Update help quit - EOF """
+    """ Update help quit - EOF """
 
     def unknown(self, inp):
         """ Default command """
