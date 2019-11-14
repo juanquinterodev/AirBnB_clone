@@ -19,15 +19,17 @@ class BaseModel():
                 if key == "created_at":
                     date_iso = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                     self.created_at = date_iso                
-                if key == "updated_at":
+                elif key == "updated_at":
                     date_iso = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                     self.updated_at = date_iso
-                if key == "id":
+                elif key == "id":
                     self.id = value
-                if key == "name":
+                elif key == "name":
                     self.name = value
-                if key == "my_number":
+                elif key == "my_number":
                     self.my_number = value
+                elif (key != '__class__'):
+                        setattr(self, key, value)
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
