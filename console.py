@@ -24,7 +24,7 @@ class HBNBCommand(cmd.Cmd):
 
     def emptyline(self):
         """ Empty line do anything """
-        pass
+        return False
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
