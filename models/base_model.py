@@ -15,6 +15,8 @@ class BaseModel():
     def __init__(self, *args, **kwargs):
         """Constructor"""
         self.id = str(uuid4())
+        self.created_at = datetime.now()
+        self.update_at = datetime.now()
         if kwargs  is not None and kwargs != {}:
             for key, value in kwargs.items():
                 if key is "created_at":
