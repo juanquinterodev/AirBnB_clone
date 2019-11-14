@@ -19,7 +19,7 @@ class BaseModel():
                 if key == "created_at":
                     date_iso = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                     self.created_at = date_iso                
-                if key == "update_at":
+                if key == "updated_at":
                     date_iso = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                     self.updated_at = date_iso
                 if key == "id":
