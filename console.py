@@ -18,9 +18,9 @@ class HBNBCommand(cmd.Cmd):
         """
         return True
 
-    def do_EOF(self):
+    def do_EOF(self, inp):
         """ End of File - ctrl + D """
-        return False
+        return True
 
     def emptyline(self):
         """ Empty line do anything """
