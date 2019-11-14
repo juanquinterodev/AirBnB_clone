@@ -31,7 +31,7 @@ class BaseModel():
                     self.name = value
                 elif key is "my_number":
                     self.my_number = value
-            models.storage.new(self)
+        models.storage.new(self)
 
     def __str__(self):
         """str should print class name, id, dict"""
