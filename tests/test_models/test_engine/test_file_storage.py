@@ -21,9 +21,10 @@ class Test_FileStorage(unittest.TestCase):
 
     def test_assert_stylepep8_testsamenity(self):
         """ Test for style tests """
-        style = pep8.StyleGuide(quiet=True)
-        new = style.check_files(['tests/test_models/test_engine/test_file_storage.py'])
-        self.assertEqual(new.total_errors, 0, "Error pep8 tests")
+        s = pep8.StyleGuide(quiet=True)
+        n = s.check_files(
+            ['tests/test_models/test_engine/test_file_storage.py'])
+        self.assertEqual(n.total_errors, 0, "Error pep8 tests")
 
     def test_assert_docstring(self):
         """ Test docstring """
@@ -32,7 +33,7 @@ class Test_FileStorage(unittest.TestCase):
         self.assertTrue(len(FileStorage.new.__doc__) > 1)
         self.assertTrue(len(FileStorage.save.__doc__) > 1)
         self.assertTrue(len(FileStorage.reload.__doc__) > 1)
- 
+
     def test_assert_is_instance(self):
         """ Test init instance is ok """
         a = FileStorage()
