@@ -1,11 +1,6 @@
 #!/usr/bin/python3
-""" Console Module"""
 
 import cmd
-import sys
-import models
-from models.user import User
-from models.base_model import BaseModel
 
 
 class HBNBCommand(cmd.Cmd):
@@ -19,12 +14,12 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_EOF(self, inp):
-        """ End of File - ctrl + D """
+        """End of File - ctrl + D"""
         return True
 
     def emptyline(self):
-        """ Empty line do anything """
+        """Empty line do anything"""
         return False
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     HBNBCommand().cmdloop()
