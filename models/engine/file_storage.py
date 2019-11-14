@@ -17,13 +17,13 @@ class FileStorage:
 
     def new(self, obj):
         key = obj.__class__.__name__ + "." + obj.id
-        self.__objects[key] = obj
+        self.__objects.update({key: obj})
 
     def save(self):
         with open(self.__file_path, 'w') as outfile:
             new_obj = {}
             for key, value in self.__objects.items():
-                new_obj[key] = value.to_dict()
+                new_obj.update({key: value.to_dict()})
             json.dump(new_obj, outfile)
 
     def reload(self):

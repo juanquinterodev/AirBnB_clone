@@ -14,24 +14,25 @@ class BaseModel():
 
     def __init__(self, *args, **kwargs):
         """Constructor"""
-        self.id = str(uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
         if kwargs  is not None and kwargs != {}:
             for key, value in kwargs.items():
-                if key is "created_at":
+                if key == "created_at":
                     date_iso = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
-                    self.created_at = date_iso
-                elif key is "update_at":
+                    self.created_at = date_iso                
+                if key == "update_at":
                     date_iso = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                     self.updated_at = date_iso
-                elif key is "id":
+                if key == "id":
                     self.id = value
-                elif key is "name":
+                if key == "name":
                     self.name = value
-                elif key is "my_number":
+                if key == "my_number":
                     self.my_number = value
-        models.storage.new(self)
+        else:
+            self.id = str(uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
+            models.storage.new(self)
 
     def __str__(self):
         """str should print class name, id, dict"""
