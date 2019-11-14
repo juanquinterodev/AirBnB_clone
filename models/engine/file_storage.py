@@ -8,6 +8,7 @@ from ..state import State
 from ..user import User
 from ..review import Review
 
+
 class FileStorage:
     __file_path = "file.json"
     __objects = {}
@@ -27,8 +28,13 @@ class FileStorage:
             json.dump(new_obj, outfile)
 
     def reload(self):
-        classes = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
-                       "Place": Place, "Review": Review, "State": State, "User": User}
+        classes = {"Amenity": Amenity,
+                   "BaseModel": BaseModel,
+                   "City": City,
+                   "Place": Place,
+                   "Review": Review,
+                   "State": State,
+                   "User": User}
         my_file = Path(self.__file_path)
         if my_file.is_file():
             with open(self.__file_path) as json_file:

@@ -14,11 +14,11 @@ class BaseModel():
 
     def __init__(self, *args, **kwargs):
         """Constructor"""
-        if kwargs  is not None and kwargs != {}:
+        if kwargs is not None and kwargs != {}:
             for key, value in kwargs.items():
                 if key == "created_at":
                     date_iso = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
-                    self.created_at = date_iso                
+                    self.created_at = date_iso
                 elif key == "updated_at":
                     date_iso = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                     self.updated_at = date_iso
@@ -56,4 +56,3 @@ class BaseModel():
         class_dict.update({'created_at': created_at_string})
         class_dict.update({'updated_at': updated_at_string})
         return class_dict
-
