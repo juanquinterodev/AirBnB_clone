@@ -76,7 +76,7 @@ class HBNBCommand(cmd.Cmd):
         elif inp[0] not in ["BaseModel", "User", "Place", "State",
                             "City", "Amenity", "Review"]:
             print("** class doesn't exist **")
-        elif len(args) == 1:
+        elif len(inp) == 1:
             print("** instance id missing **")
         else:
             models.storage.reload()
