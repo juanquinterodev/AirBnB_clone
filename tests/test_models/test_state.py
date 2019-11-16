@@ -32,7 +32,7 @@ class Test_BaseModel(unittest.TestCase):
         self.assertTrue(len(State.__str__.__doc__) > 1)
         self.assertTrue(len(State.save.__doc__) > 1)
         self.assertTrue(len(State.to_dict.__doc__) > 1)
- 
+
     def test_assert_is_instance(self):
         """ Test init instance is ok """
         a = State()

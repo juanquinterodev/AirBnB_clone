@@ -33,7 +33,7 @@ class Test_BaseModel(unittest.TestCase):
         self.assertTrue(len(BaseModel.__str__.__doc__) > 1)
         self.assertTrue(len(BaseModel.save.__doc__) > 1)
         self.assertTrue(len(BaseModel.to_dict.__doc__) > 1)
- 
+
     def test_assert_uuid_version(self):
         """Test id unique and UUID version"""
         elm = BaseModel()
@@ -62,9 +62,11 @@ class Test_BaseModel(unittest.TestCase):
 
     def test_assert_str(self):
         """ Test str method is ok """
-        b = BaseModel()
-        printb = b.__str__()
-        self.assertEqual(printb, "[BaseModel] ({}) {}".format(b.id, b.__dict__))
+        a = BaseModel()
+        c = a.__str__()
+        d = a.id
+        d1 = a.__dict__
+        self.assertEqual(c, "[BaseModel] ({}) {}".format(d, d1))
 
     def test_assert_save(self):
         """Testing save function"""
