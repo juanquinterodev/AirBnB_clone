@@ -5,6 +5,7 @@ import models
 from models.base_model import BaseModel
 import shlex
 
+
 class HBNBCommand(cmd.Cmd):
     """ HBNB class """
 
@@ -23,7 +24,7 @@ class HBNBCommand(cmd.Cmd):
         """Empty line do anything"""
         return False
 
-def do_create(self, inp):
+    def do_create(self, inp):
         """ create instances"""
         args = str(inp).split(' ')
         if len(inp) == 0:
