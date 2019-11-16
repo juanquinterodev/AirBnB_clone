@@ -65,7 +65,7 @@ class HBNBCommand(cmd.Cmd):
             models.storage.reload()
             all_objects = []
             for key, value in models.storage.all().items():
-                if obj.__class__.__name__ == inp[0]:
+                if value.__class__.__name__ == inp[0]:
                     all_objects.append(value.__str__())
             print(all_objects)
 
@@ -82,7 +82,7 @@ class HBNBCommand(cmd.Cmd):
             models.storage.reload()
             for key, value in models.storage.all().items():
                 if value.id == inp[1] and value.__class__.__name__ == inp[0]:
-                    print(obj.__str__())
+                    print(value.__str__())
                     return
             print("** no instance found **")
 
