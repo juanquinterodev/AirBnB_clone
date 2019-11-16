@@ -139,63 +139,63 @@ class HBNBCommand(cmd.Cmd):
         args = str(inp).split('.')
         if not args[0] in ["BaseModel", "User", "Place", "State",
                            "City", "Amenity", "Review"]:
-           print("unknown syntax")
+            print("unknown syntax")
         else:
-             if args[1] == "all()":
+            if args[1] == "all()":
                 self.do_all(args[0])
 
-             elif args[1] == "count()":
-                 objects = models.storage.all()
-                 count = 0
-                 for key, value in objects.items():
-                     name = str(key).split('.')
-                     if args[0] == name[0]:
-                         count += 1
-                 print(cont)
-             
-             elif "show(" in args[1]:
-                 line = args[1].replace("show(", "")
-                 line = line[:-1]
-                 val = "{} {}".format(args[0], line)
-                 self.do_show(val)
+            elif args[1] == "count()":
+                objects = models.storage.all()
+                count = 0
+                for key, value in objects.items():
+                    name = str(key).split('.')
+                    if args[0] == name[0]:
+                        count += 1
+                print(cont)
 
-             elif "destroy(" in args[1]:
-                 line = args[1].replace("destroy(", "")
-                 line = line[:-1]
-                 val = "{} {}".format(args[0], line)
-                 self.do_destroy(val)
+            elif "show(" in args[1]:
+                line = args[1].replace("show(", "")
+                line = line[:-1]
+                val = "{} {}".format(args[0], line)
+                self.do_show(val)
 
-             elif "update(" in args[1]:
-                 line = args[1].replace("update(", "")
-                 line = line[:-1]
-                 todict = line[:]
-                 arg = line.split(',')
-                 sid = arg[0][1:-1]
-                 val = args[0] + " "
-                 if arg[1][1] == '{':
-                       arg = todict.split(',', 1)
-                       dic = eval(arg[1][1:])
-                       dic['id'] = sid
-                       objects = models.storage.all()
-                       key = "{}.{}".format(args[0], sid)
-                       if key in objects:
-                           obj = models.storage.classes[args[0]](**dic)
-                           objects[key] = obj
-                           obj.save()
-                       else:
-                           print("** no instance found **")
+            elif "destroy(" in args[1]:
+                line = args[1].replace("destroy(", "")
+                line = line[:-1]
+                val = "{} {}".format(args[0], line)
+                self.do_destroy(val)
 
-                 else:
-                     count = 0
-                     for value in arg:
-                         if count == 2:
-                             value = ' "' + value[1:] + '"'
-                             value = value + v
-                             count += 1
-                     self.do_update(value)
+            elif "update(" in args[1]:
+                line = args[1].replace("update(", "")
+                line = line[:-1]
+                todict = line[:]
+                arg = line.split(',')
+                sid = arg[0][1:-1]
+                val = args[0] + " "
+                if arg[1][1] == '{':
+                    arg = todict.split(',', 1)
+                    dic = eval(arg[1][1:])
+                    dic['id'] = sid
+                    objects = models.storage.all()
+                    key = "{}.{}".format(args[0], sid)
+                    if key in objects:
+                        obj = models.storage.classes[args[0]](**dic)
+                        objects[key] = obj
+                        obj.save()
+                    else:
+                        print("** no instance found **")
 
-             else:
-                 print("*** Unknown syntax: {}".format(inp))
+                else:
+                    count = 0
+                    for value in arg:
+                        if count == 2:
+                            value = ' "' + value[1:] + '"'
+                            value = value + v
+                            count += 1
+                    self.do_update(value)
+
+            else:
+                print("*** Unknown syntax: {}".format(inp))
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
